@@ -1,4 +1,4 @@
-package com.mk.jse5batch;
+package com.mk.javase;
 
 public class StarLoop {
 /*

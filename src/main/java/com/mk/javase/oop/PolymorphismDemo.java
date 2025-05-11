@@ -1,0 +1,57 @@
+package com.mk.javase.oop;
+/*
+    Add Base Class
+    Extendable, Reliable(safe) less touch less bug/ Don't modify old code because it use by other
+    How to Polymorphism :
+    -Inheritance
+            @Override -> Compiler check it is override or not
+            super type reference = sub type object
+                super type.method()
+
+    PaymentGateway -> Violate OCP using simple method
+    if(card == 'cb'){
+        cbGateway();
+    }
+    if(card == 'aya'){
+        ayaGateway();
+    }
+ */
+class Human{
+    void work(){
+        System.out.println("Human work");
+    }
+}
+class Teacher1 extends Human{
+    @Override
+    void work(){
+        System.out.println("Teacher work");
+    }
+}
+class Doctor1 extends Human{
+    @Override
+    void work(){
+        System.out.println("Doctor work");
+    }
+}
+// Add Engineer OCP support
+class Engineer extends Human{
+    @Override
+    void work(){
+        System.out.println("Engineer work");
+    }
+}
+public class PolymorphismDemo {
+   static void everyoneWork(Human[] humans){
+       for (Human human : humans){
+           human.work(); // Working depend on the Object in human instance
+       }
+   }
+    public static void main(String[] args) {
+        Human[] humans = new Human[]{
+                new Teacher1(),
+                new Doctor1(),
+                new Engineer() // add Engineer Object only
+        };
+        everyoneWork(humans);
+    }
+}

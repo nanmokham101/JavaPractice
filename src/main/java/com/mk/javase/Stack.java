@@ -1,7 +1,5 @@
-package com.mk.jse5batch;
-/*
-    Encapsulation : protect internal state, disallow invalid operation
-*/
+package com.mk.javase;
+
 public class Stack {
     private int items[];
     private int top = -1;

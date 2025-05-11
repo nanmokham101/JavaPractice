@@ -1,4 +1,4 @@
-package com.mk.jse5batch;
+package com.mk.javase;
 /*
 * 2 3 4 5 6 outerloop
 * 2 => 1 to 12 multiplication innerloop
