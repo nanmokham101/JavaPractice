@@ -1,7 +1,8 @@
-package com.mk.javase.oop;
+package com.mk.javase.oop.polymorphism;
 /*
+    Polymorphism also call Dynamic Method Dispatch
     Add Base Class
-    Extendable, Reliable(safe) less touch less bug/ Don't modify old code because it use by other
+    Extendable, Reliable(safe), less touch less bug/ Don't modify old code because it use by other
     How to Polymorphism :
     -Inheritance
             @Override -> Compiler check it is override or not
@@ -43,7 +44,7 @@ class Engineer extends Human{
 public class PolymorphismDemo {
    static void everyoneWork(Human[] humans){
        for (Human human : humans){
-           human.work(); // Working depend on the Object in human instance
+           human.work(); // Working depend on the Object in human instance in Runtime
        }
    }
     public static void main(String[] args) {

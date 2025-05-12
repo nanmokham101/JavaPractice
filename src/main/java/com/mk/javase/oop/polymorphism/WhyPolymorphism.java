@@ -1,4 +1,4 @@
-package com.mk.javase.oop;
+package com.mk.javase.oop.polymorphism;
 
 import lombok.extern.slf4j.Slf4j;
 
