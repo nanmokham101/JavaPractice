@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function hello(){
+            console.log('Hello');
+        }
+
+        let fn = hello; // 1. can assign function as a variable
+        fn();
+
+        function call(fn){ //2. pass function as a parameter
+            fn();
+        }
+        call(hello); // hello function run
+
+        function getFn(){ // 3. return function from function
+            return hello;
+        }
+        getFn()();
+    </script>
+</body>
+</html>

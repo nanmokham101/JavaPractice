@@ -1,6 +1,7 @@
 package com.mk.javase.enumeration;
 /*
     naming constant / category value
+    Class Type -> go with Object
  */
 enum Gender{
     MALE, FEMALE, OTHER;
