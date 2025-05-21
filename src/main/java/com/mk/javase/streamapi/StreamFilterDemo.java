@@ -1,7 +1,9 @@
 package com.mk.javase.streamapi;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Optional;
+import java.util.Spliterator;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -81,6 +83,16 @@ public class StreamFilterDemo {
                 .filter(n -> n >= 10)
                 .filter(n -> n%2 ==1);
         greaterOddStream.forEach(System.out::println);
+
+        // Iterator
+        Iterator<Integer> iterator = list.stream().iterator();
+        while(iterator.hasNext()){
+            System.out.println("Iterator : "+ iterator.next());
+        }
+
+        //Spliterator -> spilt to computer good for concurrent // may or may not be give order guarantee
+        Spliterator<Integer> spliterator = list.spliterator();
+        while (spliterator.tryAdvance(n-> System.out.println(n)));
     }
 
 }
