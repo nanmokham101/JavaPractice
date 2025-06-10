@@ -3,7 +3,7 @@ package com.mk.javase.string;
 public class StringDemo {
     public static void main(String[] args) {
         String str = "Hello";
-        String str1 = "hello";
+        String str1 = "Hello";
         System.out.println("str == str1 : "+ str.equals(str1));
 
         boolean flag = false;

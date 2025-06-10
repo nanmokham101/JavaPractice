@@ -37,6 +37,23 @@ import java.util.Stack;
         3.3 scan operator precedence equal check
     a+b*c -> abc*+
  */
+/**
+ *
+ *
+ Step 1 : Scan the Infix Expression from left to right.
+ Step 2 : If the scanned character is an operand,
+ append it with final Infix to Postfix string.
+ Step 3 : Else,//operator
+ Step 3.1 : If the precedence order of the scanned(incoming) operator is greater than the precedence order of the operator in the stack
+ (or the stack is empty or the stack contains a ‘(‘ or ‘[‘ or ‘{‘), push it on stack.
+ Step 3.2 : Else, Pop all the operators from the stack which are greater than or equal to in precedence than that of the scanned operator. After doing that Push the scanned operator to the stack. (If you encounter parenthesis while popping then stop there and push the scanned operator in the stack.)
+ Step 4 : If the scanned character is an ‘(‘ or ‘[‘ or ‘{‘, push it to the stack.
+ Step 5 : If the scanned character is an ‘)’or ‘]’ or ‘}’, pop the stack and and output it until a ‘(‘ or ‘[‘ or ‘{‘ respectively is encountered, and discard both the parenthesis.
+ Step 6 : Repeat steps 2-6 until infix expression is scanned.
+ Step 7 : Print the output
+ Step 8 : Pop and output from the stack until it is not empty.
+
+ */
 public class PostfixTransformer {
     //Step 3.1
     static Map<Character, Integer> precedence = new HashMap<Character, Integer>();
@@ -56,50 +73,51 @@ public class PostfixTransformer {
             //step1
             if (isOperand(ch)) {
                 postfix += ch;
-            } else {
-                //Step 2
-                if (isOperator(ch)) {
-                    if (opStack.isEmpty()) {
-                        opStack.push(ch);
-                    } else { // stack not empty
-                        //Step 3
-                        //Step 3.1
-                        if (isPrecedenceGreaterThan(ch, opStack.peek())) { // check * > [+](on stack) -> push ch
-                            opStack.push(ch);
-                        }
-                        /*
-                            Step 3.2 a*b+c
-                               [*] > ch -> pop
-                         */
-                        // scanner < opStack top
-                        else if (isPrecedenceLessThan(ch, opStack.peek())) {
-                            while (!opStack.isEmpty() && isPrecedenceGreaterThan(opStack.peek(), ch)) {
-                                postfix += opStack.pop();
-                            }
-                            // stack is empty
-                            opStack.push(ch);
-                        }
-                        /*
-                            Step 3.3 Equal case a-b+c
-                            x > y is strictly greater
-                            !(x < y) is greater than or equal
-                         */
-                        else if(isPrecedenceEqual(ch, opStack.peek())){
-                            //The top of the stack has greater than or equal precedence compared to ch.
-                            //While the operator at the top of the stack is not less than the current operator (i.e., it's equal or greater, and should be popped).
-                            while (!opStack.isEmpty() && !isPrecedenceLessThan(opStack.peek(), ch)) {
-                                postfix += opStack.pop();
-                            }
-                            // stack is empty
-                            opStack.push(ch);
-                        }
+            } else if (isOperator(ch)) {//Step 3
+                //Step 3.1
+                if(opStack.isEmpty()){
+                    opStack.push(ch);
+                }
+                else if(!opStack.isEmpty() && isPrecedenceGreaterThan(ch, opStack.peek())){
+                    opStack.push(ch);
+                }
+                else if(!opStack.isEmpty() && opStack.peek() == '('){
+                    opStack.push(ch);
+                }
+                else if(!opStack.isEmpty() && (isPrecedenceLessThan(ch, opStack.peek()) || isPrecedenceEqual(ch, opStack.peek()))){
+                    while (!opStack.isEmpty() && !isPrecedenceLessThan(opStack.peek(), ch)) {
+                        postfix += opStack.pop();
+                    }
+                    // stack is empty
+                    opStack.push(ch);
+                }
+            }else if(ch == '('){
+                    /*
+                        Step 4  ( -> push
+                                  ) -> pop
+                     */
+                opStack.push(ch);
+            }else if(ch == ')'){
+                    /*
+                        Step 5 -> pop until found ( opening bracket
+                        (a+b)*c -> ab+c*
+                     */
+                while (!opStack.isEmpty() && opStack.peek() != '('){
+                    char op = opStack.pop();
+                    if(op != '(' || op != ')') {
+                        postfix += op;
                     }
                 }
+                opStack.pop();
             }
         }
+
         //Step 4
         while (!opStack.isEmpty()) { // isEmpty ma pyit ma chin = until empty do pop -> isEmpty !false = ture -> execute in while loop / isEmpty !true = false exit while loop
-            postfix += opStack.pop();
+            char operator = opStack.pop();
+            if(operator != '(' || operator != ')') {
+                postfix += operator;
+            }
         }
         return postfix;
     }
@@ -113,13 +131,28 @@ public class PostfixTransformer {
     }
 
     static boolean isPrecedenceGreaterThan(char lastChar, char firstChar) {
-        return precedence.get(lastChar) > precedence.get(firstChar); // get value
+        try {
+            return precedence.get(lastChar) > precedence.get(firstChar); // get value
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
     static boolean isPrecedenceLessThan(char lastChar, char firstChar) {
-        return precedence.get(lastChar) < precedence.get(firstChar); // get value
+        try {
+            return precedence.get(lastChar) < precedence.get(firstChar); // get value
+        }catch (Exception e){
+            return false;
+        }
     }
+
     static boolean isPrecedenceEqual(char lastChar, char firstChar) {
         return precedence.get(lastChar).equals(precedence.get(firstChar)); // get value
+    }
+
+    public static void main(String[] args) {
+        String output = PostfixTransformer.transform("a+(b*c+d)/e");
+        System.out.println(output);
     }
 }

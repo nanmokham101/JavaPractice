@@ -40,4 +40,28 @@ public class PostfixTransformerTest {
         String postfix = PostfixTransformer.transform("a-b+c");
         assertEquals("ab-c+", postfix);
     }
+
+    @Test // Test 3.4 (a+b)*c
+    public void testPostfixTransformer4(){
+        String postfix = PostfixTransformer.transform("(a+b)*c");
+        assertEquals("ab+c*", postfix);
+    }
+
+    @Test //  (a+b)*(c/d)
+    public void testPostfixTransformer5(){
+        String postfix = PostfixTransformer.transform("(a+b)*(c/d)");
+        assertEquals("ab+cd/*", postfix);
+    }
+
+    @Test //  (a+b)/(c-d)
+    public void testPostfixTransformer6(){
+        String postfix = PostfixTransformer.transform("(a+b)/(c-d)");
+        assertEquals("ab+cd-/", postfix);
+    }
+
+    @Test //  a+(b*c+d)/e
+    public void testPostfixTransformer7(){
+        String postfix = PostfixTransformer.transform("a+(b*c+d)/e");
+        assertEquals("abc*d++e/", postfix);
+    }
 }
