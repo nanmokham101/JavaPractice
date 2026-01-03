@@ -1,7 +1,7 @@
 package com.mk.dsa.queue;
 
 public interface IQueue {
-    void enqueue(int item);
+    void enqueue(int item); // insert
     int dequeue();
     int peek();
     boolean isFull();

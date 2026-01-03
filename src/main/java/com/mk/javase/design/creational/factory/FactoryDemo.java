@@ -5,47 +5,48 @@ package com.mk.javase.design.creational.factory;
 
         disadvantage -> mush hierarchy and class
  */
-interface Logger{
-    void log(String text);
+interface Payment{
+    void pay(String text);
 }
-class XMLLogger implements Logger{
+class ABankPayment implements Payment{
 
     @Override
-    public void log(String text) {
-        System.out.println("XMLLog : "+ text);
+    public void pay(String text) {
+        System.out.println("Pay with : "+ text);
     }
 }
-class ConsoleLogger implements Logger{
+class BBankPayment implements Payment{
 
     @Override
-    public void log(String text) {
-        System.out.println("ConsoleLog : "+ text);
+    public void pay(String text) {
+        System.out.println("Pay with : "+ text);
     }
 }
 
-abstract class LoggerFactory{
-    abstract Logger getLogger();
+abstract class PaymentFactory{
+    abstract Payment getPayment();
 }
-class XMLLoggerFactory extends LoggerFactory{
+class ABankPaymentFactory extends PaymentFactory{
 
     @Override
-    Logger getLogger() {
-        return new XMLLogger();
+    Payment getPayment() {
+        return new ABankPayment();
     }
 }
-class ConsoleLoggerFactory extends LoggerFactory{
+class BBankPaymentFactory extends PaymentFactory{
 
     @Override
-    Logger getLogger() {
-        return new ConsoleLogger();
+    Payment getPayment() {
+        return new BBankPayment();
     }
 }
 public class FactoryDemo {
     public static void main(String[] args) {
-        LoggerFactory loggerFactory = new ConsoleLoggerFactory();
-        loggerFactory.getLogger().log("This is Console");
+        PaymentFactory paymentFactory = new ABankPaymentFactory();
+        paymentFactory.getPayment().pay("ABank");
 
-        loggerFactory = new XMLLoggerFactory();
-        loggerFactory.getLogger().log("This is XML");
+        paymentFactory = new BBankPaymentFactory();
+        paymentFactory.getPayment().pay("BBank");
     }
 }
+

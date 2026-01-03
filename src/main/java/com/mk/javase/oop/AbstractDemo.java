@@ -2,7 +2,7 @@ package com.mk.javase.oop;
 
 /*
     In Polymorphism because of Inheritance we need Human Object.
-    None concrete class is cal Abstract class
+    None concrete class is call Abstract class
     Eg. we don't have Human Object is not present not need but want to use in specialized/child so we use Abstract
     The class with Abstract method is called Abstract Class. Can't instantiate Object for Human.
     The class that extend Abstract Class need to override the parent abstract method.
