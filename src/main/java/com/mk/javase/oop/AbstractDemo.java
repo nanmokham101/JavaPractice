@@ -2,6 +2,7 @@ package com.mk.javase.oop;
 
 /*
     In Polymorphism because of Inheritance we need Human Object.
+    Concrete class == implement class (do their work)
     None concrete class is call Abstract class
     Eg. we don't have Human Object is not present not need but want to use in specialized/child so we use Abstract
     The class with Abstract method is called Abstract Class. Can't instantiate Object for Human.
@@ -23,7 +24,7 @@ abstract class Human{
 }
 class Teacher1 extends Human {
     @Override
-    void work(){
+     void work(){
         System.out.println("Teacher work");
     }
 //    @Override
@@ -46,7 +47,7 @@ class Engineer extends Human {
 }
 public class AbstractDemo {
         public static void main(String[] args) {
-            Human human = new Teacher1();
+            Human human = new Doctor1();
             human.work();
         }
     }

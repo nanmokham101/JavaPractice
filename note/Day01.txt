@@ -1,0 +1,70 @@
+Day- 1 (03.01.2026)
+
+1. Java 8, OOP , SOLID principle 
+
+Why we use Java? What is Java? 
+Why? 
+C#, Go, Java = Static Programming language
+- Static Programming language => String a = "Apple";
+                                    a = 1; // can't assign number // eaay to handle the program of data
+Java use in Enterprise project such as Banking domain important data - KBZ banking, ibanking, KBZ pay
+
+
+
+Java vs Spring Boot
+
+Java -> imigine like music language --- Shan, Eng, Burmese song = language 
+
+SpringBoot -> Rock, Pop, country song = framework 
+
+-------
+
+Python and PHP = Dynamic Progamming language 
+
+String s = "appple';
+s = 10; //can assign number
+-------
+
+What is JDK, JVM and JRE? this is main core concept in java
+JDK = Java Development Kit -> InteliJ is for developer 
+JVM = Java Virtual Machine  -> Window OS , Mac OS , Linux OS (platform)=> write java code one time and run everywhere
+JRE = Java Runtime Environment 
+when we deploy our jar file on Platform/ server we need jre to install 
+---------
+
+    1.1: OOP 
+         1. Classes / Objects - Blueprint for Object/
+            detail eg in real world, Human(name, age, address, phone number) -> Class 
+          Object -> Mg Mg, 27, Shan, 0923456 
+         2. Encapsulation -> hide data/ control and validate data. 
+         Prevent for outside/invalidate coming data
+            eg. deposite / withdraw money from Kpay => topup phone bill like MPT
+
+                Kpay - 500 
+                Topup - 1000
+
+                if(top_amount <= balance)
+                {
+                    topup();
+                }else{
+                    throw Exception(...);
+                }
+
+
+         3. Inheritance -> Parent and child 
+         4. Polymorphism -> type changing
+         5. Abstraction  -> enforce child to inplement like Parent do
+--------
+
+2. Servlet, JSP
+3. MVC vs REST
+4. ORM vs JDBC
+5. DTO vs DAO
+6. Dependency Injection
+7. RDBMS (SQL vs NoSQL)
+8. JavaSE vs J2EE (now call Jakarta EE)
+9. Synonyms vs Asynchronous
+
+
+
+Git 

@@ -22,7 +22,7 @@ class Human{
         System.out.println("Human work");
     }
 }
-class Teacher1 extends Human{
+class Teacher1 extends Human{// Inheritance
     @Override
     void work(){
         System.out.println("Teacher work");
@@ -41,8 +41,18 @@ class Engineer extends Human{
         System.out.println("Engineer work");
     }
 }
+
+class Waiter extends Human{
+    @Override
+    void work(){
+        System.out.println("Waiter work");
+    }
+}
 public class PolymorphismDemo {
    static void everyoneWork(Human[] humans){
+       /*
+       Human[] -> we can store in Human[] such as -> Doctor1, Engineer, Teacher1
+        */
        for (Human human : humans){
            human.work(); // Working depend on the Object in human instance in Runtime
        }
@@ -51,7 +61,8 @@ public class PolymorphismDemo {
         Human[] humans = new Human[]{
                 new Teacher1(),
                 new Doctor1(),
-                new Engineer() // add Engineer Object only
+                new Engineer(), // add Engineer Object only
+                new Waiter()
         };
         everyoneWork(humans);
     }
