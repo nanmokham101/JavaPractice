@@ -1,9 +1,9 @@
-Day- 1 (03.01.2026)
+Day- 1
 
-1. Java 8, OOP , SOLID principle 
+1. Java 8, OOP , SOLID principle
 
-Why we use Java? What is Java? 
-Why? 
+Why we use Java? What is Java?
+Why?
 C#, Go, Java = Static Programming language
 - Static Programming language => String a = "Apple";
                                     a = 1; // can't assign number // eaay to handle the program of data
@@ -13,34 +13,34 @@ Java use in Enterprise project such as Banking domain important data - KBZ banki
 
 Java vs Spring Boot
 
-Java -> imigine like music language --- Shan, Eng, Burmese song = language 
+Java -> imigine like music language --- Shan, Eng, Burmese song = language
 
-SpringBoot -> Rock, Pop, country song = framework 
+SpringBoot -> Rock, Pop, country song = framework
 
 -------
 
-Python and PHP = Dynamic Progamming language 
+Python and PHP = Dynamic Progamming language
 
 String s = "appple';
 s = 10; //can assign number
 -------
 
 What is JDK, JVM and JRE? this is main core concept in java
-JDK = Java Development Kit -> InteliJ is for developer 
+JDK = Java Development Kit -> InteliJ is for developer
 JVM = Java Virtual Machine  -> Window OS , Mac OS , Linux OS (platform)=> write java code one time and run everywhere
-JRE = Java Runtime Environment 
-when we deploy our jar file on Platform/ server we need jre to install 
+JRE = Java Runtime Environment
+when we deploy our jar file on Platform/ server we need jre to install
 ---------
 
-    1.1: OOP 
+    1.1: OOP
          1. Classes / Objects - Blueprint for Object/
-            detail eg in real world, Human(name, age, address, phone number) -> Class 
-          Object -> Mg Mg, 27, Shan, 0923456 
-         2. Encapsulation -> hide data/ control and validate data. 
+            detail eg in real world, Human(name, age, address, phone number) -> Class
+          Object -> Mg Mg, 27, Shan, 0923456
+         2. Encapsulation -> hide data/ control and validate data.
          Prevent for outside/invalidate coming data
             eg. deposite / withdraw money from Kpay => topup phone bill like MPT
 
-                Kpay - 500 
+                Kpay - 500
                 Topup - 1000
 
                 if(top_amount <= balance)
@@ -51,20 +51,106 @@ when we deploy our jar file on Platform/ server we need jre to install
                 }
 
 
-         3. Inheritance -> Parent and child 
+         3. Inheritance -> Parent and child
          4. Polymorphism -> type changing
          5. Abstraction  -> enforce child to inplement like Parent do
 --------
+    1.2 SOLID principle ( Day -2)
+
+    S -> Single Responsibility Principal, if one class need to compute only Responsibility
+        eg.1.Payroll class-> should have related function
+            - employee_payroll();
+
+        eg.2.Report class
+            - report();
+
+        Employee class -> save(), payroll(), report() -> many Responsibility. One class should be have one function but need to do perfect
+    O -> OCP Open for extension close for modification
+
+        e.g Payroll class
+            - employee_payroll(int salary_amount){
+                salary_amount = 20,000;
+            }; // In company ABC, boss wanna increate the employee salary;
+
+    L -> Liskov Substitution can child object can replace parent reference
+        Car {
+            start();
+        } // parent
+        ElectricCare extend Car{
+            start(String engin);
+        }
+
+    I -> Interface Segregation ->don't create useless interface, not use fat interface use thin interface
+    eg. one interface shouldn't have many implementaion
+    What is Interface?
+        eg. AC, remote -> We can turn on from remote
+
+    D -> Dependency Inversion-> create outside and parse object that call it
+
+    A ->B , B -> C, create B from outside and pass the object B for A, C
 
 2. Servlet, JSP
+
+    What is Servlet?
+    Servlet = server
+    C:\Users\Nan Mo Kham>ncat google.com 80
+        GET / HTTP/1.1
+
+        HTTP/1.1 200 OK
+        Date: Sun, 04 Jan 2026 10:49:53 GMT
+        Expires: -1
+        Cache-Control: private, max-age=0
+    JSP -> IU technology (Frontend technology: Angular, JavaScript, React...), form
+
 3. MVC vs REST
-4. ORM vs JDBC
-5. DTO vs DAO
-6. Dependency Injection
-7. RDBMS (SQL vs NoSQL)
+    What is MVC?
+    M= Model: hold data
+    V= View: User interface
+    C= Controller: Handle user action
+
+4. RDBMS (SQL vs NoSQL)
+    Relational Database Management System -> store in table connect with foreign
+    NoSQL : Not only SQL
+
+5. ORM vs JDBC
+    JDBC
+    What is ORM? other third party technology -> Hibernate, Mybetic, Ibetic
+    Java store and work data in Object style but in our database store data like table and column
+    Java -> ORM -> Database
+
+6. DTO vs DAO
+    DTO?-> eg. Student Mark/Grade, In student grade we have
+    StudentGrade{ // store in database DAO
+        String student_id; // STU001
+        List<Subject> subjectList; // English, Science,...
+        String status;
+    }
+
+    Subject{//store in database DAO
+        String name; //English
+        double mark;
+    }
+
+    //DTO response for client
+    StudentGradeResponse{ // not store in database
+        List<StudentGrade> studentGradeList;
+    }
+
+7. Dependency Injection - Spring support DI
+
 8. JavaSE vs J2EE (now call Jakarta EE)
-9. Synonyms vs Asynchronous
+    JavaSE? use for standalone applicaion only one user can user per time
+    J2EE? user thounsand of user can use the application
 
+9. Synchronous vs Asynchronous
+    Synchronous means= Each task must finish before the next one starts/ next task cannot start until current finishes. Java is Synchronous
+    real world eg. Toilet and user
+        user 1 enter Toilet after user1 done the other user can continue
 
+    Asynchronous: Start a task and don’t wait for it to finish
+    You can do other tasks at the same time
+    in real world eg. Restaurant, waiter and customers
+    when cutomers order food to waiter, waiter get order list and send noti to kicten
+    and then this waiter go to other customers table and get other oder too.
 
-Git 
+    To Do : Please study Java8 and a little about Spring MVC vs Spring Boot

@@ -33,20 +33,33 @@ class GasEngine extends Engine{
         System.out.println("Gas Engine start.");
     }
 }
+class EVCar extends Engine{
+    void start(){
+        System.out.println("EV start.");
+    }
+}
 class Car{
     Engine engine;
-    Car(Engine engine){
+    Car(Engine engine){ // create outside
         this.engine = engine;
     }
     void start(){
         System.out.println("Car start.");
         this.engine.start();
     }
-        }
+}
 public class Spring {
     public static void main(String[] args) {
-        Engine engine = new GasEngine(); // L // DI here is problem need to create Engine object A->B->C need to create A first then create B and Create C called DI
+        Engine engine = new EVCar(); // L // DI here is problem need to create Engine object A->B->C need to create A first then create B and Create C called DI
         Car car = new Car(engine);// D - > Car use Parent reference -> parse with child reference or parent -> But Penguin can't replace to use with parent Bird violate the Liskov
         car.start(); // not touch the car
     }
+
+    /* output
+
+Car start.
+Gas Engine start.
+    */
+
+
 }
